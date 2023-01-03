@@ -12,6 +12,9 @@ cabal install
 ```
 
 You should have `xmobar-x86_64-linux` among cabal's binaries. If you'd like
-cabal to install into different directory you can specify it with `--installdir
-<dir>`.
+cabal to install into different directory you can specify it with
+
+```bash
+cabal install --installdir <dir>
+```
 
