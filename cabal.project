@@ -1,0 +1,4 @@
+packages:
+  .,
+  **/*.cabal
+flags: +all_extensions
