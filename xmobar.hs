@@ -46,23 +46,40 @@ config = defaultConfig {
   , pickBroadest = True
   , persistent = False
   , allDesktops = False
-  , commands = [ Run $ Cpu ["-t", "cpu: <total>%"] 10
-              , Run $ Memory ["--template", "mem: <usedratio>%"] 10
-              , Run $ Swap ["-t", "[<usedratio>%]"] 60
-              , Run $ Date "%H:%M %Y-%m-%d" "date" 30
-              , Run XMonadLog
-              , Run $ Brightness ["-t", "brigh: <percent>%", "--", "-D", "intel_backlight" ] 10
-              , Run $ Volume "default" "Master" ["-t", "vol: <volume>%"] 10
+  , commands = [
+              Run XMonadLog
+              , Run $ Kbd [("us", "\xF11C  us"), ("cz(qwerty)", "\xF11C  cs")]
+              , Run $ Volume "default" "Master" [
+                  "-t", "<volumestatus>",
+                  "-p", "2",
+                  "--",
+                  "-O", "\xF028 ",
+                  "-o", "\xF026 ",
+                  "-c", "#ffffff",
+                  "-C", "#ffffff"
+                  ] 10
+              , Run $ Brightness [
+                  "-t", "\xE30D <percent>%",
+                  "-p", "2",
+                  "--",
+                  "-D", "intel_backlight"
+                  ] 10
+              , Run $ Wireless "wlp3s0" ["-t", "\xF1EB <ssid> <quality>%"] 10
               , Run $ BatteryP ["BAT1"] [ "-t"
-                , "batt: <left>%"
+                , "\xF578 <left>% (<timeleft>)"
+                , "-p", "3"
                 , "--"
-                , "-O", "charging" ] 120
-              , Run $ Kbd [("us", "us"), ("cz(qwerty)", "cs")]
-              , Run $ Wireless "wlp3s0" ["-t", "<ssid> <quality>%"] 10
+                , "-O", "\xFBA3"
+                , "-i", "\xFBA3"
+                ] 60
+              , Run $ Cpu ["-t", "\xE266 <total>%", "-p", "2" ] 10
+              , Run $ Memory ["--template", "\xF1C0 <usedratio>%", "-p", "2"] 10
+              , Run $ Swap ["-t", "[<usedratio>%]"] 60
+              , Run $ Date "%H:%M %m.%d. %Y" "date" 30
       ]
   , sepChar  = "%"
   , alignSep = "}{"
-  , template = "%XMonadLog% }{ %kbd% | %default:Master% %bright% | %wlp3s0wi% | %battery% | %cpu% %memory%%swap% | %date% "
+  , template = "%XMonadLog% }{ %kbd%  %default:Master% %bright%  %wlp3s0wi%  %battery%  %cpu% %memory%%swap%  %date% "
   }
 
 main :: IO ()
