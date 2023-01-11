@@ -27,19 +27,22 @@ instance Exec HelloWorld where
     alias HelloWorld = "hw"
     run   HelloWorld = return "<fc=red>Hello World!!</fc>"
 
+
+-- data MyDynamicInfo = 
+
 -- Configuration, using predefined monitors as well as our HelloWorld
 -- plugin:
 
 config :: Config
 config = defaultConfig {
-  font = "xft:DejaVu-9"
+  font = "JetBrainsMono Nerd Font Bold 9"
   , additionalFonts = []
   , bgColor  = "#020202"
   , fgColor  = "#ffffff"
   , position = TopW C 100
   , lowerOnStart = True
   , hideOnStart = False
-  , textOffset = -1
+  , textOffset = 0
   , pickBroadest = True
   , persistent = False
   , allDesktops = False
