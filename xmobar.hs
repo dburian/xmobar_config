@@ -51,7 +51,7 @@ config = defaultConfig {
               , Run $ Kbd [("us", "\xF11C  us"), ("cz(qwerty)", "\xF11C  cs")]
               , Run $ Volume "default" "Master" [
                   "-t", "<volumestatus>",
-                  "-p", "2",
+                  "-p", "3",
                   "--",
                   "-O", "\xF028 ",
                   "-o", "\xF026 ",
